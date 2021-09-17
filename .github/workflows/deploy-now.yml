@@ -18,12 +18,28 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: 'recursive'
+      - name: setup
+        if: ${{ steps.project.outputs.deployment-enabled == 'true' }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.17.x
+      - name: prepare environment
+        if: ${{ steps.project.outputs.deployment-enabled == 'true' }}
+        run: |
+          npm install --global yarn
+          yarn install --frozen-lockfile
+      - name: Build project
+        if: ${{ steps.project.outputs.deployment-enabled == 'true' }}
+        run: yarn build
+        env:
+          CI: true
+          SITE_URL: ${{ steps.project.outputs.site-url }}
       - name: Deploy build
         if: ${{ steps.project.outputs.deployment-enabled == 'true' }}
         uses: ionos-deploy-now/deploy-to-ionos-action@v1
         with:
           remote-host: ${{ steps.project.outputs.remote-host }}
-          dist-folder: ./
+          dist-folder: dist
           project: 7afeff46-0434-4484-84d9-1d6cafe3aba2
           storage-quota: ${{ steps.project.outputs.storage-quota }}
           branch-id: ${{ steps.project.outputs.branch-id }}
