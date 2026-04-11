@@ -1,6 +1,33 @@
 <script lang="ts">
+  let timelineContainer: HTMLDivElement;
+  let showFab = false;
+
+  function handleScroll() {
+    if (timelineContainer) {
+      showFab = timelineContainer.scrollTop > 120;
+    }
+  }
+
+  function scrollToTop() {
+    if (timelineContainer) {
+      timelineContainer.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
   // Dummy data array for timeline
   const items = [
+    {
+      year: "02/2016 – Heute",
+      title: "Softwareentwickler bei der neusta mobile solutions GmbH",
+      company: "neusta mobile solutions GmbH",
+      desc: "Fullstack-Entwickler für Android und Web-Anwendungen\nCross-Plattform-Entwicklung mit Flutter\nBackend-Entwicklung mit Ruby on Rails und Spring Boot\nCloud-Infrastruktur und DevOps\nCI/CD-Pipelines und Automatisierung",
+    },
+    {
+      year: "01/2016 – 01/2016",
+      title: "",
+      company: "",
+      desc: "arbeitssuchend und parallel dazu Vertiefung in Android App Entwicklung und REST-Serverdiensten",
+    },
     {
       year: "03/2014 – 12/2015",
       title: "Anwendungsentwickler und Programmierer",
@@ -91,12 +118,12 @@
   ];
 </script>
 
-<div class="glass-panel text-start h-100">
+<div class="glass-panel text-start h-100 position-relative">
   <h2 class="mb-4 d-flex align-items-center">
     <span class="text-primary me-2 fw-bold">#</span> Werdegang
   </h2>
 
-  <div class="timeline-container scrollable-timeline">
+  <div class="timeline-container scrollable-timeline" bind:this={timelineContainer} on:scroll={handleScroll}>
     <div class="timeline">
       {#each items as item}
         <div class="timeline-item">
@@ -106,14 +133,16 @@
               >{item.year}</span
             >
             <h4 class="h5 fw-bold mb-1">{item.title}</h4>
-            {#if item.company}<h6 class="text-primary mb-2">{item.company}</h6>{/if}
+            {#if item.company}<h6 class="text-primary mb-2">
+                {item.company}
+              </h6>{/if}
             {#if item.desc}
               <div class="opacity-75 mb-0">
-                {#if item.desc.includes('\n')}
+                {#if item.desc.includes("\n")}
                   <ul class="mb-0 ps-3">
-                    {#each item.desc.split('\n') as line}
+                    {#each item.desc.split("\n") as line}
                       {#if line.trim()}
-                        <li class="mb-1">{line.trim().replace(/^- /, '')}</li>
+                        <li class="mb-1">{line.trim().replace(/^- /, "")}</li>
                       {/if}
                     {/each}
                   </ul>
@@ -127,15 +156,50 @@
       {/each}
     </div>
   </div>
+
+  {#if showFab}
+    <button class="fab-btn shadow-lg" on:click={scrollToTop} aria-label="Zurück nach oben">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+      </svg>
+    </button>
+  {/if}
 </div>
 
 <style lang="scss">
+  .fab-btn {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+
+    &:hover {
+      transform: translateY(-4px) scale(1.05);
+      opacity: 1;
+      box-shadow: 0 8px 20px rgba(var(--bs-primary-rgb), 0.6) !important;
+    }
+  }
+
   .scrollable-timeline {
     max-height: 520px;
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 15px; // for scrollbar width offset
-    
+    padding-left: 15px; // Prevent markers getting cut off by overflow-x
+    margin-left: -15px; // Realign the timeline visually
+
     // Fade out mask at bottom
     -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
