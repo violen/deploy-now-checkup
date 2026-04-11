@@ -14,3 +14,9 @@ Die Webseite wird als Statische Webseite über IONOS Deploy-Now bereitgestellt, 
 - **Sprache:** TypeScript
 - **Styling:** SCSS (`sass`), Bootstrap (via `sveltestrap`)
 - **Hosting:** IONOS Deploy-Now
+
+## Design System & Styling
+- **Theme Support:** Automatische Light/Dark Mode Umschaltung (`prefers-color-scheme`).
+- **Farbpalette (Dark Mode):** Hintergrund in Anthrazit, Akzentfarbe Knall-Orange (`#ff7800`).
+- **Optik:** "Aero Glass" (Glassmorphism) für durchschimmernde Inhaltsboxen.
+- **Vibe:** Moderner Software-Entwickler & Systemintegrator mit lockeren und positiven Elementen (Comic/Toon-Avatare anstelle steifer Fotos).
