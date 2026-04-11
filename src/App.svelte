@@ -2,6 +2,8 @@
   import { onMount } from "svelte";
   import { Col, Container, Row, Button } from "sveltestrap";
   import avatarImage from "./assets/toon_avatar.png";
+  import Timeline from "./lib/Timeline.svelte";
+  import Skills from "./lib/Skills.svelte";
 
   let isDarkTheme = true;
 
@@ -54,6 +56,22 @@
               <Button color="primary" size="lg">Mehr über mich</Button>
               <Button color="light" size="lg" outline>Meine Projekte</Button>
             </div>
+          </div>
+        </Col>
+      </Row>
+    </div>
+
+    <!-- CV Section -->
+    <div class="mt-5 pt-3">
+      <Row>
+        <Col lg="7">
+          <div class="mb-5 mb-lg-0 h-100">
+            <Timeline />
+          </div>
+        </Col>
+        <Col lg="5">
+          <div class="h-100">
+            <Skills />
           </div>
         </Col>
       </Row>
