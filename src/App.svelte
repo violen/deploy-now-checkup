@@ -6,6 +6,7 @@
   import Skills from "./lib/Skills.svelte";
   import Projects from "./lib/Projects.svelte";
   import BehindTheCode from "./lib/BehindTheCode.svelte";
+  import Footer from "./lib/Footer.svelte";
   import LanguageSwitcher from "./lib/LanguageSwitcher.svelte";
   import { i18n } from "./store/i18n.svelte";
 
@@ -122,6 +123,9 @@
 
     <!-- Projects Section -->
     <Projects />
+
+    <!-- Footer -->
+    <Footer />
   </Container>
 </main>
 

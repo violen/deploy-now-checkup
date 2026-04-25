@@ -26,5 +26,11 @@ export const de = {
   },
   common: {
     scroll_top: "Nach oben scrollen"
+  },
+  footer: {
+    copyright: "© {year} André Hauser – Senior Softwareentwickler",
+    legal: "Impressum",
+    privacy: "Datenschutz",
+    disclaimer: "Diese Seite nutzt externe Ressourcen (Bootstrap, Icons) über CDNs für eine optimale Darstellung."
   }
 };
