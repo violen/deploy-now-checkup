@@ -22,8 +22,7 @@ export const de = {
   projects: {
     references: "Referenzen",
     show_all: "Alle {count} Projekte zeigen",
-    show_less: "Weniger anzeigen",
-    extract_note: "(Diese Daten wurden direkt aus deinen Profil-PDFs extrahiert.)"
+    show_less: "Weniger anzeigen"
   },
   common: {
     scroll_top: "Nach oben scrollen"

@@ -103,9 +103,6 @@
           </button>
         </div>
       {/if}
-      <p class="text-muted small mb-0">
-        {i18n.t('projects.extract_note')}
-      </p>
     </div>
   </div>
 </div>

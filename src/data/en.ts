@@ -22,8 +22,7 @@ export const en = {
   projects: {
     references: "References",
     show_all: "Show all {count} projects",
-    show_less: "Show less",
-    extract_note: "(This data was extracted directly from your profile PDFs.)"
+    show_less: "Show less"
   },
   common: {
     scroll_top: "Scroll to top"
