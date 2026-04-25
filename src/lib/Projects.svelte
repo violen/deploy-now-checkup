@@ -73,18 +73,20 @@
           {/each}
         </div>
       </div>
-
-      {#if isExpanded && showFab}
-        <button 
-          type="button"
-          class="fab-btn shadow-lg animate-in" 
-          onclick={scrollToTop} 
-          aria-label="Nach oben scrollen"
-        >
-          <i class="bi bi-chevron-up"></i>
-        </button>
-      {/if}
     </div>
+
+    {#if isExpanded && showFab}
+      <button 
+        type="button"
+        class="fab-btn shadow-lg animate-in" 
+        onclick={scrollToTop} 
+        aria-label="Nach oben scrollen"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>       
+        </svg>
+      </button>
+    {/if}
 
     <div class="text-center mt-5">
       {#if !isExpanded}
@@ -135,15 +137,14 @@
         width: 6px;
       }
       &::-webkit-scrollbar-track {
-        background: rgba(var(--bs-primary-rgb), 0.05);
-        border-radius: 10px;
+        background: transparent;
       }
       &::-webkit-scrollbar-thumb {
-        background: rgba(var(--bs-primary-rgb), 0.2);
-        border-radius: 10px;
-        &:hover {
-          background: rgba(var(--bs-primary-rgb), 0.4);
-        }
+        background: var(--glass-border);
+        border-radius: 4px;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background: var(--color-primary);
       }
     }
   }
@@ -160,13 +161,8 @@
 
     &:hover {
       background: rgba(var(--bs-primary-rgb), 0.05);
-      border-color: rgba(var(--bs-primary-rgb), 0.3);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-
-      .project-icon-wrapper {
-        transform: scale(1.1);
-      }
+      border-color: rgba(var(--bs-primary-rgb), 0.2);
+      transform: translateY(-2px);
     }
   }
 
@@ -195,32 +191,28 @@
   }
 
   .fab-btn {
-    position: sticky;
-    bottom: 20px;
-    right: 20px;
-    float: right;
-    width: 42px;
-    height: 42px;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background-color: var(--color-primary);
-    color: white;
+    color: var(--color-bg);
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 100;
+    cursor: pointer;
+    z-index: 50;
     transition: all 0.3s ease;
-    margin-top: -62px; 
-    box-shadow: 0 4px 15px rgba(var(--bs-primary-rgb), 0.3) !important;
+    opacity: 0.9;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
 
     &:hover {
-      background-color: #ff8c00;
-      transform: scale(1.1);
-    }
-    
-    i {
-      font-size: 1.2rem;
-      -webkit-text-stroke: 0.5px;
+      transform: translateY(-4px) scale(1.05);
+      opacity: 1;
+      box-shadow: 0 8px 20px rgba(var(--bs-primary-rgb), 0.6) !important;
     }
   }
 
@@ -231,7 +223,7 @@
     &:hover {
       background-color: var(--color-primary);
       border-color: var(--color-primary);
-      color: white;
+      color: var(--color-bg);
     }
   }
 

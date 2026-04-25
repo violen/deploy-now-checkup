@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Button, Col, Container, Row } from "sveltestrap";
+  import { Col, Container, Row } from "sveltestrap";
   import avatarImage from "./assets/toon_avatar.png";
   import Projects from "./lib/Projects.svelte";
   import Skills from "./lib/Skills.svelte";
@@ -43,13 +43,11 @@
 <main class="d-flex align-items-center min-vh-100 py-5">
   <Container>
     <div class="glass-panel text-center">
-      <!-- Wir nutzen die korrekten inneren Divs für Layouting und Spacing statt class am Element selbst -->
       <Row>
         <Col md="5" lg="4">
           <div
             class="avatar-wrapper mb-4 mb-md-0 d-flex justify-content-center align-items-center h-100"
           >
-            <!-- Render toon avatar from assets -->
             <img
               src={avatarImage}
               alt="Toon Avatar"
@@ -77,12 +75,11 @@
             <div
               class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start"
             >
-              <Button color="primary" size="lg">Mehr über mich</Button>
-              <Button
-                color="light"
-                size="lg"
-                outline
-                on:click={scrollToProjects}>Meine Projekte</Button
+              <button type="button" class="btn btn-primary btn-lg px-4">Mehr über mich</button>
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-lg px-4"
+                onclick={scrollToProjects}>Meine Projekte</button
               >
             </div>
           </div>
@@ -127,6 +124,43 @@
       &:hover {
         transform: scale(1.05);
       }
+    }
+  }
+
+  // Ensure buttons match the custom primary color and have proper states
+  .btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-bg);
+    
+    &:hover {
+      background-color: #ff8c00;
+      border-color: #ff8c00;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(var(--bs-primary-rgb), 0.3);
+    }
+    
+    &:active {
+      background-color: #e66a00 !important;
+      transform: translateY(0);
+    }
+  }
+
+  .btn-outline-primary {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    
+    &:hover {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: var(--color-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(var(--bs-primary-rgb), 0.2);
+    }
+
+    &:active {
+      background-color: var(--color-primary) !important;
+      transform: translateY(0);
     }
   }
 </style>
