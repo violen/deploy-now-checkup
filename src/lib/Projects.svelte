@@ -33,7 +33,7 @@
         <span class="text-primary me-2 fw-bold">#</span> Projekte
       </h2>
       {#if projects.length > 0}
-        <span class="ms-auto badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill fs-6 fw-normal">
+        <span class="ms-auto custom-badge">
           {projects.length} Referenzen
         </span>
       {/if}
@@ -81,7 +81,7 @@
           onclick={scrollToTop} 
           aria-label="Nach oben scrollen"
         >
-          <i class="bi bi-arrow-up"></i>
+          <i class="bi bi-chevron-up"></i>
         </button>
       {/if}
     </div>
@@ -89,14 +89,14 @@
     <div class="text-center mt-5">
       {#if !isExpanded}
         <div class="mb-3">
-          <button type="button" class="btn btn-outline-primary btn-lg" onclick={toggleExpand}>
+          <button type="button" class="btn btn-outline-primary btn-lg px-4" onclick={toggleExpand}>
             Alle {projects.length} Projekte zeigen
           </button>
         </div>
       {:else}
         <div class="mb-3">
-          <button type="button" class="btn btn-outline-secondary btn-sm" onclick={toggleExpand}>
-            Weniger anzeigen
+          <button type="button" class="btn btn-link text-primary text-decoration-none" onclick={toggleExpand}>
+            <i class="bi bi-dash-circle me-2"></i>Weniger anzeigen
           </button>
         </div>
       {/if}
@@ -108,6 +108,16 @@
 </div>
 
 <style lang="scss">
+  .custom-badge {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    background: rgba(var(--bs-primary-rgb), 0.1);
+    color: var(--color-primary);
+    border: 1px solid rgba(var(--bs-primary-rgb), 0.2);
+  }
+
   .projects-grid-container {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     max-height: 1400px; 
@@ -122,17 +132,17 @@
 
       /* Custom Modern Scrollbar */
       &::-webkit-scrollbar {
-        width: 8px;
+        width: 6px;
       }
       &::-webkit-scrollbar-track {
-        background: rgba(230, 106, 0, 0.05);
+        background: rgba(var(--bs-primary-rgb), 0.05);
         border-radius: 10px;
       }
       &::-webkit-scrollbar-thumb {
-        background: rgba(230, 106, 0, 0.2);
+        background: rgba(var(--bs-primary-rgb), 0.2);
         border-radius: 10px;
         &:hover {
-          background: rgba(230, 106, 0, 0.4);
+          background: rgba(var(--bs-primary-rgb), 0.4);
         }
       }
     }
@@ -149,8 +159,8 @@
     cursor: default;
 
     &:hover {
-      background: rgba(230, 106, 0, 0.05);
-      border-color: rgba(230, 106, 0, 0.3);
+      background: rgba(var(--bs-primary-rgb), 0.05);
+      border-color: rgba(var(--bs-primary-rgb), 0.3);
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 
@@ -171,16 +181,16 @@
     justify-content: center;
     min-width: 48px;
     height: 48px;
-    background: rgba(230, 106, 0, 0.1);
+    background: rgba(var(--bs-primary-rgb), 0.1);
     border-radius: 10px;
   }
 
   .project-tag {
     font-weight: 500;
     font-size: 0.75rem;
-    background: rgba(230, 106, 0, 0.15) !important;
+    background: rgba(var(--bs-primary-rgb), 0.12) !important;
     color: var(--color-primary) !important;
-    border: 1px solid rgba(230, 106, 0, 0.2);
+    border: 1px solid rgba(var(--bs-primary-rgb), 0.2);
     padding: 0.5em 0.8em;
   }
 
@@ -189,8 +199,8 @@
     bottom: 20px;
     right: 20px;
     float: right;
-    width: 45px;
-    height: 45px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background-color: var(--color-primary);
     color: white;
@@ -200,11 +210,28 @@
     justify-content: center;
     z-index: 100;
     transition: all 0.3s ease;
-    margin-top: -65px; 
+    margin-top: -62px; 
+    box-shadow: 0 4px 15px rgba(var(--bs-primary-rgb), 0.3) !important;
 
     &:hover {
       background-color: #ff8c00;
       transform: scale(1.1);
+    }
+    
+    i {
+      font-size: 1.2rem;
+      -webkit-text-stroke: 0.5px;
+    }
+  }
+
+  .btn-outline-primary {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    
+    &:hover {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: white;
     }
   }
 
