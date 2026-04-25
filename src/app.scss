@@ -67,3 +67,23 @@ a {
   --bs-btn-hover-border-color: var(--color-text);
   --bs-btn-hover-color: var(--color-bg);
 }
+
+// Custom Tooltip Styling for Glassmorphism
+.tooltip {
+  --bs-tooltip-bg: rgba(20, 20, 22, 0.95); // Dark background by default
+  --bs-tooltip-color: #fff;
+  
+  .tooltip-inner {
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+[data-bs-theme="light"] .tooltip {
+  --bs-tooltip-bg: rgba(255, 255, 255, 0.95);
+  --bs-tooltip-color: #111;
+}
