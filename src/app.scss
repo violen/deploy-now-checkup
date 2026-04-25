@@ -1,0 +1,89 @@
+// Custom Theme Variables
+:root {
+  // Light Mode (Default)
+  --color-bg: #f8f9fa;
+  --color-text: #212529;
+  --color-primary: #e66a00; // slightly darker orange for contrast
+  --bs-primary: #e66a00;
+  --bs-primary-rgb: 230, 106, 0;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+[data-bs-theme="dark"] {
+  // Dark Mode
+  --color-bg: #1e1e20; // Anthracite
+  --color-text: #f8f9fa;
+  --color-primary: #ff7800; // Bright Orange
+  --bs-primary: #ff7800;
+  --bs-primary-rgb: 255, 120, 0;
+  --glass-bg: rgba(30, 30, 32, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  // A subtle tech background pattern
+  background-image: radial-gradient(var(--glass-border) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+// Global Glassmorphism Utility
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  padding: 2rem;
+}
+
+// Overwrite link colors
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  
+  &:hover {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-primary);
+  }
+}
+
+.text-primary {
+  color: var(--color-primary) !important;
+}
+
+// Ensure Bootstrap Buttons override hover logic with the custom color correctly
+.btn-primary {
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-bg: var(--color-text);
+  --bs-btn-hover-border-color: var(--color-text);
+  --bs-btn-hover-color: var(--color-bg);
+}
+
+// Custom Tooltip Styling for Glassmorphism
+.tooltip {
+  --bs-tooltip-bg: rgba(20, 20, 22, 0.95); // Dark background by default
+  --bs-tooltip-color: #fff;
+  
+  .tooltip-inner {
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+[data-bs-theme="light"] .tooltip {
+  --bs-tooltip-bg: rgba(255, 255, 255, 0.95);
+  --bs-tooltip-color: #111;
+}
