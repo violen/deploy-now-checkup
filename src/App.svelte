@@ -2,9 +2,10 @@
   import { onMount } from "svelte";
   import { Col, Container, Row } from "sveltestrap";
   import avatarImage from "./assets/toon_avatar.png";
-  import Projects from "./lib/Projects.svelte";
-  import Skills from "./lib/Skills.svelte";
   import Timeline from "./lib/Timeline.svelte";
+  import Skills from "./lib/Skills.svelte";
+  import Projects from "./lib/Projects.svelte";
+  import BehindTheCode from "./lib/BehindTheCode.svelte";
 
   let isDarkTheme = true;
 
@@ -18,12 +19,21 @@
     }
   }
 
-  function scrollToProjects() {
-    const element = document.getElementById("projects");
+  function scrollToSection(id: string) {
+    const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
   }
+
+  function scrollToProjects() {
+    scrollToSection("projects");
+  }
+
+  function scrollToAbout() {
+    scrollToSection("about-me");
+  }
+
 
   onMount(() => {
     // Initial check for system preference
@@ -73,7 +83,7 @@
             <div
               class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start"
             >
-              <button type="button" class="btn btn-primary btn-lg px-4">Mehr über mich</button>
+              <button type="button" class="btn btn-primary btn-lg px-4" onclick={scrollToAbout}>Mehr über mich</button>
               <button
                 type="button"
                 class="btn btn-outline-primary btn-lg px-4"
@@ -84,6 +94,9 @@
         </Col>
       </Row>
     </div>
+
+    <!-- Personal Philosophy Section -->
+    <BehindTheCode />
 
     <!-- CV Section -->
     <div class="mt-5 pt-3">
