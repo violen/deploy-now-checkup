@@ -8,6 +8,18 @@ const dictionaries = { de, en };
 class I18nStore {
   lang = $state<Language>("de");
 
+  constructor() {
+    // Detect browser language on client side
+    if (typeof navigator !== "undefined") {
+      const browserLang = navigator.language.split("-")[0];
+      if (browserLang === "en") {
+        this.lang = "en";
+      } else {
+        this.lang = "de";
+      }
+    }
+  }
+
   // Translation function
   t(path: string, params: Record<string, any> = {}) {
     const keys = path.split(".");
