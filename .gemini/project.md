@@ -15,6 +15,9 @@ Die Webseite wird als Statische Webseite über IONOS Deploy-Now bereitgestellt, 
 - **Styling:** SCSS (`sass`), Bootstrap (via `sveltestrap`)
 - **Hosting:** IONOS Deploy-Now
 
+## Workspace-Berechtigungen
+- **Datenzugriff:** Der Ordner `sample-data/` ist explizit für Analysen und Dateizugriffe durch den Gemini-Agenten freigegeben, auch wenn dieser in der `.gitignore` gelistet ist. Dies dient der Extraktion von Profildaten aus PDFs und Dokumenten.
+
 ## Design System & Styling
 - **Theme Support:** Automatische Light/Dark Mode Umschaltung (`prefers-color-scheme`).
 - **Farbpalette (Dark Mode):** Hintergrund in Anthrazit, Akzentfarbe Knall-Orange (`#ff7800`).
