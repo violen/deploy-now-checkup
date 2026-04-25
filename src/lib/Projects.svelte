@@ -132,6 +132,10 @@
       overflow-y: auto;
       padding-right: 1rem;
 
+      // Fade out mask at bottom (like in timeline)
+      -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+
       /* Custom Modern Scrollbar */
       &::-webkit-scrollbar {
         width: 6px;

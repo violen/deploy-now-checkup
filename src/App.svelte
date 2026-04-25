@@ -63,14 +63,12 @@
               Hi, ich bin <span class="text-primary">André Hauser</span>
             </h1>
             <h3 class="h4 text-muted mb-4">
-              IT-Systemintegrator & Software-Entwickler
+              Senior Softwareentwickler | Systemintegrator | Cloud & Mobile Expert
             </h3>
             <p class="lead mb-4 opacity-75">
-              Willkommen auf meinem dynamischen Online-Lebenslauf! Ich liebe es
-              professionelle Software und robuste Infrastruktur zu kombinieren.
-              <br /><br />
-              (Hinweis: Später werden wir hier deine finalen Profiltexte aus der
-              PDF importieren!)
+              Mit Wurzeln in der Systemintegration und über 15 Jahren IT-Erfahrung verbinde ich tiefes technisches Verständnis mit moderner Macher-Mentalität. 
+              Von der ersten Codezeile in Flutter oder Kotlin bis zum automatisierten Deployment in Kubernetes-Clustern: 
+              Ich liebe es, professionelle Software und robuste Infrastruktur nicht nur zu planen, sondern erfolgreich zum Leben zu erwecken.
             </p>
             <div
               class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start"
