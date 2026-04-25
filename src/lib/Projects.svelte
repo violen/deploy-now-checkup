@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { i18n } from "../store/i18n.svelte";
   import { projects } from "../data/projects";
 
   let isExpanded = $state(false);
@@ -30,11 +31,11 @@
   <div class="glass-panel text-start position-relative">
     <div class="d-flex align-items-center mb-4">
       <h2 class="mb-0 d-flex align-items-center">
-        <span class="text-primary me-2 fw-bold">#</span> Projekte
+        <span class="text-primary me-2 fw-bold">#</span> {i18n.t('sections.projects')}
       </h2>
       {#if projects.length > 0}
         <span class="ms-auto custom-badge">
-          {projects.length} Referenzen
+          {projects.length} {i18n.t('projects.references')}
         </span>
       {/if}
     </div>
@@ -54,12 +55,12 @@
                     <i class="bi {project.icon} fs-3 text-primary"></i>
                   </div>
                   <div>
-                    <h3 class="h5 fw-bold mb-0">{project.title}</h3>
+                    <h3 class="h5 fw-bold mb-0">{project.title[i18n.lang]}</h3>
                     <small class="text-muted">{project.period}</small>
                   </div>
                 </div>
                 <p class="opacity-75 mb-4 flex-grow-1">
-                  {project.desc}
+                  {project.desc[i18n.lang]}
                 </p>
                 <div class="d-flex flex-wrap gap-2 mt-auto">
                   {#each project.tags as tag}
@@ -80,7 +81,7 @@
         type="button"
         class="fab-btn shadow-lg animate-in" 
         onclick={scrollToTop} 
-        aria-label="Nach oben scrollen"
+        aria-label={i18n.t('common.scroll_top')}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>       
@@ -92,18 +93,18 @@
       {#if !isExpanded}
         <div class="mb-3">
           <button type="button" class="btn btn-outline-primary btn-lg px-4" onclick={toggleExpand}>
-            Alle {projects.length} Projekte zeigen
+            {i18n.t('projects.show_all', { count: projects.length })}
           </button>
         </div>
       {:else}
         <div class="mb-3">
           <button type="button" class="btn btn-link text-primary text-decoration-none" onclick={toggleExpand}>
-            <i class="bi bi-dash-circle me-2"></i>Weniger anzeigen
+            <i class="bi bi-dash-circle me-2"></i>{i18n.t('projects.show_less')}
           </button>
         </div>
       {/if}
       <p class="text-muted small mb-0">
-        (Diese Daten wurden direkt aus deinen Profil-PDFs extrahiert.)
+        {i18n.t('projects.extract_note')}
       </p>
     </div>
   </div>
@@ -132,11 +133,9 @@
       overflow-y: auto;
       padding-right: 1rem;
 
-      // Fade out mask at bottom (like in timeline)
       -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
       mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
 
-      /* Custom Modern Scrollbar */
       &::-webkit-scrollbar {
         width: 6px;
       }
@@ -208,7 +207,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 50;
+    z-index: 100;
     transition: all 0.3s ease;
     opacity: 0.9;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;

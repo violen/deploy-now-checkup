@@ -1,11 +1,11 @@
 <script lang="ts">
-  // Svelte 5 component for André Hauser's philosophy
+  import { i18n } from "../store/i18n.svelte";
 </script>
 
 <div id="about-me" class="mt-5 pt-3">
   <div class="d-flex align-items-center mb-4">
     <h2 class="mb-0 d-flex align-items-center">
-      <span class="text-primary me-2 fw-bold">#</span> Jenseits der Syntax
+      <span class="text-primary me-2 fw-bold">#</span> {i18n.t('sections.behind_the_code')}
     </h2>
   </div>
 
@@ -18,10 +18,9 @@
             <i class="bi bi-journal-check fs-3"></i>
           </div>
         </div>
-        <h3 class="h5 fw-bold mb-3 text-primary">Strukturierte Vielseitigkeit</h3>
+        <h3 class="h5 fw-bold mb-3 text-primary">{i18n.t('behind.s1_title')}</h3>
         <p class="opacity-75 small">
-          Mein breites Wissen von 3D-Design über native App-Entwicklung bis hin zu Cloud-Infrastrukturen führt nicht zur Zerstreutheit, sondern zu einem ganzheitlichen Verständnis. 
-          Durch strikte <strong>Selbstdisziplin, Kalenderplanung und saubere Notizführung</strong> kanalisiere ich diese Vielseitigkeit zielgerichtet in robuste Lösungen.
+          {@html i18n.t('behind.s1_text')}
         </p>
       </div>
     </div>
@@ -34,10 +33,9 @@
             <i class="bi bi-shield-check fs-3"></i>
           </div>
         </div>
-        <h3 class="h5 fw-bold mb-3 text-primary">Pragmatismus vor Hype</h3>
+        <h3 class="h5 fw-bold mb-3 text-primary">{i18n.t('behind.s2_title')}</h3>
         <p class="opacity-75 small">
-          Nach über <strong>15 Jahren in der IT</strong> wähle ich Technologien nach ihrem echten Mehrwert aus, nicht nach dem neuesten Trend. 
-          Ob bewährte Enterprise-Lösungen wie Java/Spring oder moderne Frameworks wie Flutter und Svelte – das Werkzeug muss zum Problem passen, nicht umgekehrt.
+          {@html i18n.t('behind.s2_text')}
         </p>
       </div>
     </div>
@@ -50,11 +48,9 @@
             <i class="bi bi-lightning-charge fs-3"></i>
           </div>
         </div>
-        <h3 class="h5 fw-bold mb-3 text-primary">Die Macher-Mentalität</h3>
+        <h3 class="h5 fw-bold mb-3 text-primary">{i18n.t('behind.s3_title')}</h3>
         <p class="opacity-75 small">
-          Ich verstehe mich als Problemlöser mit unbedingtem Umsetzungswillen. 
-          Für mich endet die Verantwortung nicht beim fertigen Code, sondern erst wenn das Produkt <strong>stabil und automatisiert in der Cloud läuft</strong>. 
-          "Geht nicht" ist für mich nur ein Ansporn, die Infrastruktur passend zu machen.
+          {@html i18n.t('behind.s3_text')}
         </p>
       </div>
     </div>
@@ -110,7 +106,7 @@
     margin-bottom: 0;
   }
   
-  strong {
+  :global(strong) {
     color: var(--color-primary);
     font-weight: 600;
   }

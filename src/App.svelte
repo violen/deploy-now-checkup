@@ -6,6 +6,8 @@
   import Skills from "./lib/Skills.svelte";
   import Projects from "./lib/Projects.svelte";
   import BehindTheCode from "./lib/BehindTheCode.svelte";
+  import LanguageSwitcher from "./lib/LanguageSwitcher.svelte";
+  import { i18n } from "./store/i18n.svelte";
 
   let isDarkTheme = true;
 
@@ -34,7 +36,6 @@
     scrollToSection("about-me");
   }
 
-
   onMount(() => {
     // Initial check for system preference
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -49,6 +50,10 @@
     };
   });
 </script>
+
+<div class="top-nav-controls">
+  <LanguageSwitcher />
+</div>
 
 <main class="d-flex align-items-center min-vh-100 py-5">
   <Container>
@@ -73,22 +78,23 @@
               Hi, ich bin <span class="text-primary">André Hauser</span>
             </h1>
             <h3 class="h4 text-muted mb-4">
-              Senior Softwareentwickler | Systemintegrator | Cloud & Mobile Expert
+              {i18n.t('header.subtitle')}
             </h3>
             <p class="lead mb-4 opacity-75">
-              Mit Wurzeln in der Systemintegration und über 15 Jahren IT-Erfahrung verbinde ich tiefes technisches Verständnis mit moderner Macher-Mentalität. 
-              Von der ersten Codezeile in Flutter oder Kotlin bis zum automatisierten Deployment in Kubernetes-Clustern: 
-              Ich liebe es, professionelle Software und robuste Infrastruktur nicht nur zu planen, sondern erfolgreich zum Leben zu erwecken.
+              {i18n.t('header.intro')}
             </p>
             <div
               class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start"
             >
-              <button type="button" class="btn btn-primary btn-lg px-4" onclick={scrollToAbout}>Mehr über mich</button>
+              <button type="button" class="btn btn-primary btn-lg px-4" onclick={scrollToAbout}>
+                {i18n.t('header.btn_more')}
+              </button>
               <button
                 type="button"
                 class="btn btn-outline-primary btn-lg px-4"
-                onclick={scrollToProjects}>Meine Projekte</button
-              >
+                onclick={scrollToProjects}>
+                {i18n.t('header.btn_projects')}
+              </button>
             </div>
           </div>
         </Col>
@@ -124,6 +130,13 @@
     scroll-behavior: smooth;
   }
 
+  .top-nav-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
   .avatar-wrapper {
     max-width: 260px;
     margin: 0 auto;
@@ -138,7 +151,6 @@
     }
   }
 
-  // Ensure buttons match the custom primary color and have proper states
   .btn-primary {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
